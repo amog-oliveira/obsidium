@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Post from '../../components/feed/Post';
+import Feed from '../../components/feed/Feed';
 
 
 export default class FeedScreen extends Component {
     render(){
         return(
-            <Post/>
+            <Feed/>
         )
     }
 }
