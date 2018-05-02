@@ -5,6 +5,11 @@ import { STYLES } from './style';
 import { LOGO_GIRL_POWER } from '../../config/images';
 
 export default class SignInScreen extends Component{
+
+  feedScreen(){
+    this.props.navigation.navigate('FeedScreen');
+  }
+
   render(){
     return (
       <Container>
@@ -30,7 +35,7 @@ export default class SignInScreen extends Component{
             <View style={ STYLES.container}>
               <TouchableOpacity
                 style={STYLES.button}
-                onPress={() => { alert('Você acessou.') }}>
+                onPress={() => { this.feedScreen() }}>
                 <Text
                   style={STYLES.text}
                 >Acessar</Text>

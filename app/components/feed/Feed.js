@@ -1,25 +1,11 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import {
-  Container,
-  Content,
-  Card,
-  CardItem,
-  Left,
-  Body,
-  Thumbnail,
-  Button,
-  Icon,
-  Right
-} from "native-base";
-import { styles } from "./styles";
-import { FEMALE_AVATAR } from "../../config/images";
+import React, { Component } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { Container, Content, Card, CardItem, Left, Body, Thumbnail, Button, Icon, Right } from 'native-base'
+import { styles } from './styles';
+import { FEMALE_AVATAR } from '../../config/images';
 
-
-export default class FeedScreen extends Component {
-    render(){
-        return( 
-        <Container>
+const Post = (props) => {
+    return <Container>
         <Content>
           <Card style={styles.CardView}>
             <CardItem>
@@ -59,7 +45,7 @@ export default class FeedScreen extends Component {
             </CardItem>
           </Card>
         </Content>
-      </Container>
-        )
-    }
-}
+      </Container>;
+};
+
+export default Post;
