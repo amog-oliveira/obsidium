@@ -3,8 +3,7 @@
     "sdkVersion": "26.0.0",
     "splash":{
       "image": "./app/images/splash-screen.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#FEF9B0"
+      "resizeMode": "cover"
     }
   }
 }
