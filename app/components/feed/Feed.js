@@ -32,7 +32,9 @@ const Post = (props) => {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent>
+                <Button transparent
+                  onPress={ () => this.props.navigation.navigate('PostScreen') }
+                 >
                   <Icon active name="thumbs-down" />
                   <Text>10 curtidas</Text>
                 </Button>
