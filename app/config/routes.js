@@ -12,8 +12,7 @@ export const Navigation = StackNavigator({
         backgroundColor: 'white',
       },
       headerTitleStyle: {
-        fontWeight: 'bold',
-        color: 'black'
+        color: 'purple'
       }
     }
   },

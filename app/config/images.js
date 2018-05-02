@@ -1,0 +1,1 @@
+export const LOGO_GIRL_POWER = require('../images/girlpower.png');
