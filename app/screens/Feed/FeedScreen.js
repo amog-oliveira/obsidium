@@ -48,9 +48,9 @@ export default class FeedScreen extends Component {
               <Left>
                 <Button transparent
                   onPress={ () => this.props.navigation.navigate('PostScreen') }
-                 >
-                  <Icon active name="thumbs-down" />
-                  <Text>10 curtidas</Text>
+                >
+                  <Icon active name="ios-sad-outline" />
+                  <Text> 10 reações</Text>
                 </Button>
               </Left>
               <Right>
