@@ -16,11 +16,12 @@ export default class PostScreen extends Component {
       <View>
         <TextInput
           editable={true}
-          maxLength={40}
+          multiline={true}
+          maxLength={460}
           value={this.state.text }
           onChangeText={ (text) => this.setState({text})}
         />
-        <Text>{this.state.text.length}</Text>
+        <Text>{this.state.text.length}/460</Text>
       </View>
     );
   }
