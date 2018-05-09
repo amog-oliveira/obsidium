@@ -14,52 +14,56 @@ import {
 } from "native-base";
 import { styles } from "./styles";
 import { FEMALE_AVATAR } from "../../config/images";
+import ActionButton from 'react-native-action-button';
+import { Entypo } from '@expo/vector-icons';
 
+
+const { data } = require('../../config/test.json');
 
 export default class FeedScreen extends Component {
-    render(){
-        return( 
-        <Container>
-        <Content>
-          <Card style={styles.CardView}>
-            <CardItem>
-              <Left>
-                <Thumbnail source={FEMALE_AVATAR} />
-                <Body>
-                  <Text>Amanda Oliveira</Text>
-                  <Text>AMOG</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <View style={styles.PostView}>
-                <Text style={styles.text}>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                  Praesent vestibulum molestie lacus. Aenean nonummy
-                  hendrerit mauris. Phasellus porta. Fusce suscipit varius
-                  mi. Cum sociis natoque penatibus et magnis dis parturient
-                  montes, nascetur ridiculus mus. Nulla dui. Fusce feugiat
-                  malesuada odio. Morbi nunc odio, gravida at, cursus nec,
-                  luctus a, lore (460)
-                </Text>
-              </View>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent
-                  onPress={ () => this.props.navigation.navigate('PostScreen') }
-                >
-                  <Icon active name="ios-sad-outline" />
-                  <Text> 10 reações</Text>
-                </Button>
-              </Left>
-              <Right>
-                <Text>12 horas atrás</Text>
-              </Right>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
-        )
-    }
+  render(){
+    const { navigate } = this.props.navigation;
+      return( 
+      <Container>
+      <Content>
+        <Card style={styles.CardView}>
+          <CardItem>
+            <Left>
+              <Thumbnail source={FEMALE_AVATAR} />
+              <Body>
+                <Text>{ data.name }</Text>
+                <Text>{ data.apelido }</Text>
+              </Body>
+            </Left>
+          </CardItem>
+          <CardItem cardBody>
+            <View style={styles.PostView}>
+              <Text style={styles.text}>
+                { data.mensagem }
+              </Text>
+            </View>
+          </CardItem>
+          <CardItem>
+            <Left>
+              <Button transparent
+                onPress={ () => navigate('PostScreen') }
+              >
+                <Icon active name="ios-sad-outline" />
+                <Text> { data.reacoes } reações</Text>
+              </Button>
+            </Left>
+            <Right>
+              <Text>{ data.enviado } horas atrás</Text>
+            </Right>
+          </CardItem>
+        </Card>
+      </Content>
+      <ActionButton buttonColor="purple">
+        <ActionButton.Item buttonColor='purple' onPress={ () => navigate('PostScreen') }>
+          <Entypo name="new-message" size={20} color="white" />
+        </ActionButton.Item>
+      </ActionButton>
+    </Container>
+      )
+  }
 }

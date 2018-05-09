@@ -3,6 +3,7 @@ import {
   TextInput, View, Text
 } from 'react-native';
 
+
 export default class PostScreen extends Component {
   constructor(props) {
     super(props);
