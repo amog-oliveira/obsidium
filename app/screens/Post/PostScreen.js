@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { STYLES } from './styles';
 
+
 export default class PostScreen extends Component {
   constructor(props) {
     super(props);
