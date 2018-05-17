@@ -14,55 +14,49 @@ import {
 } from "native-base";
 import { styles } from "./styles";
 import { FEMALE_AVATAR } from "../../config/images";
-import ActionButton from 'react-native-action-button';
-import { Entypo } from '@expo/vector-icons';
-
+import {FloatButtonAction} from '../../components/FloatButtonAction';
+import { CardHeader } from "../../components/CardHeader";
+import { CardContent } from "../../components/CardContent";
+import { CardFooter } from "../../components/CardFooter";
 
 const { data } = require('../../config/test.json');
 
 export default class FeedScreen extends Component {
+
+  cardView(message){
+ 
+    if( message !== null ){
+      return( 
+          <Card style={styles.CardView}>
+            <CardHeader imageURI={FEMALE_AVATAR} name={data.name} nickname={data.nickname} />
+            <CardContent mensagem={mensagem} />            
+            <CardFooter enviado={data.enviado} />            
+          </Card>
+      );
+    }else{
+      return(
+        <Text>Não mensagens cadastradas</Text>
+      );
+    }
+  }
+
+
+
   render(){
     const { navigate } = this.props.navigation;
+
+    const { params } = this.props.navigation.state;
+    const message = params ? params.message : null;
+
+
       return( 
       <Container>
-      <Content>
-        <Card style={styles.CardView}>
-          <CardItem>
-            <Left>
-              <Thumbnail source={FEMALE_AVATAR} />
-              <Body>
-                <Text>{ data.name }</Text>
-                <Text>{ data.apelido }</Text>
-              </Body>
-            </Left>
-          </CardItem>
-          <CardItem cardBody>
-            <View style={styles.PostView}>
-              <Text style={styles.text}>
-                { data.mensagem }
-              </Text>
-            </View>
-          </CardItem>
-          <CardItem>
-            <Left>
-              <Button transparent
-                onPress={ () => navigate('PostScreen') }
-              >
-                <Icon active name="ios-sad-outline" />
-                <Text> { data.reacoes } reações</Text>
-              </Button>
-            </Left>
-            <Right>
-              <Text>{ data.enviado } horas atrás</Text>
-            </Right>
-          </CardItem>
-        </Card>
-      </Content>
-      <ActionButton buttonColor="purple">
-        <ActionButton.Item buttonColor='purple' onPress={ () => navigate('PostScreen') }>
-          <Entypo name="new-message" size={20} color="white" />
-        </ActionButton.Item>
-      </ActionButton>
+
+        <Content>
+          { this.cardView(message) }
+        </Content>
+
+      <FloatButtonAction navigate={navigate} />
     </Container>
       )
   }
