@@ -4,15 +4,20 @@ import { width } from '../../config/constants';
 
 
 export const STYLES = StyleSheet.create({
-  button: {
-    width: width * 0.8,
-    //flex: 1,
-    //alignSelf: 'center',
-    backgroundColor: 'purple',
-    height: 40,    
-    marginTop: 20,
-    justifyContent: 'center'
-    
+  container:{
+    flex:1,
+  },
+  buttonStyle:{
+    width: 200,
+    alignSelf: 'center',
+    borderRadius: 6,
+    padding: 10,
+    backgroundColor: '#3B5998',
+  },
+  textButtonStyle: {
+    color: 'white', 
+    alignSelf: 'center',
+    fontWeight: 'bold'
   },
   text:{
     color: 'white',
@@ -24,7 +29,4 @@ export const STYLES = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center'
   },
-  view: {
-    alignItems: 'center'
-  }
 })

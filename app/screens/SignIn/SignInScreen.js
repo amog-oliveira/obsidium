@@ -1,50 +1,24 @@
 import React, { Component } from 'react';
 import { Container, Content, Form, Item, Input, Label } from 'native-base';
 import { Text, TouchableOpacity, View, Image } from 'react-native';
+import LoginFB from './LoginFB';
 import { STYLES } from './style';
-import { LOGO_GIRL_POWER } from '../../config/images';
+import { LOGO } from '../../config/images';
 
 export default class SignInScreen extends Component{
-
-  feedScreen(){
-    this.props.navigation.navigate('FeedScreen');
-  }
 
   render(){
     return (
       <Container>
-
-        <View
-            style={ STYLES.view }
-          >
-          <Image
-            source={LOGO_GIRL_POWER}
-          />
-        </View>
-
         <Content>
           <Form>
-            <Item floatingLabel>
-              <Label>Username</Label>
-              <Input />
-            </Item>
-            <Item floatingLabel last>
-              <Label>Password</Label>
-              <Input secureTextEntry={true} />
-            </Item>
             <View style={ STYLES.container}>
-              <TouchableOpacity
-                style={STYLES.button}
-                onPress={() => { this.feedScreen() }}>
-                <Text
-                  style={STYLES.text}
-                >Acessar</Text>
-              </TouchableOpacity>
-
+              <Text>Bem vindo(a) ao Aqui tem Assédio</Text>
+              <LoginFB/>
             </View>
-
           </Form>
         </Content>
+
       </Container>
     );
   }
