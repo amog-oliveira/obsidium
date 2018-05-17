@@ -2,7 +2,8 @@
   "expo": {
     "sdkVersion": "26.0.0",
     "splash":{
-      "image": "./app/images/splash-screen.png",
+      "image": "./app/images/tela1.png",
+      "backgroundColor": "#630460",
       "resizeMode": "cover"
     }
   }
