@@ -5,7 +5,6 @@ import {
     Text,
     TouchableOpacity,
     Alert,
-
 } from 'react-native';
 import Expo from 'expo';
 import { STYLES } from './style';
@@ -50,6 +49,7 @@ export default class LoginFB extends Component{
             const userFacebookInfo = await response.json();
             const credential = await firebase.auth.FacebookAuthProvider.credential(token);
             this.firebaseLogin(credential, userFacebookInfo);
+            this.navigateTo('FeedScreen');
         }else{
             Alert.alert("Login", "Login cancelado");
         } 
@@ -57,14 +57,19 @@ export default class LoginFB extends Component{
 
     getButton(){
         return(
-            <TouchableOpacity onPress={() => this.facebookLogin()}>
-                <View style={STYLES.buttonStyle}>
-                    <Text style={STYLES.textButtonStyle}>
-                        Facebook
-                    </Text>
-                </View>
+            <TouchableOpacity 
+                style={STYLES.buttonStyle} 
+                onPress={() => this.facebookLogin()}
+            >
+                <Text style={STYLES.textButtonStyle}>
+                    Continuar com Facebook
+                </Text>
             </TouchableOpacity>
         );
+    }
+
+    navigateTo(screenName){
+        this.props.navigation.navigate(screenName);
     }
 
     render(){

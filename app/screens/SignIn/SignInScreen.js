@@ -9,7 +9,7 @@ import { LOGO } from '../../config/images';
 export default class SignInScreen extends Component{
 
   componentWillMount(){
-    const { navigate } = this.props.navigation
+    const { navigate } = this.props.navigation;
     firebase.auth().onAuthStateChanged((user) => {
       if(user != null){
         navigate('FeedScreen');
@@ -19,17 +19,11 @@ export default class SignInScreen extends Component{
 
   render(){
       return (
-        <Container>
-          <Content>
-            <Form>
-              <View style={ STYLES.container}>
-                <Text>Bem vindo(a) ao Aqui tem Assédio</Text>
-                <LoginFB/>
-              </View>
-            </Form>
-          </Content>
-
-        </Container>
+        <View style={ STYLES.container }>
+          <Text style={ STYLES.welcomeMessage }>Bem vindo(a) ao{ '\n'}Aqui tem Assédio</Text>
+          <LoginFB/>
+          <Text style={ STYLES.termsMessage }>Ao clicar em continuar, aceito os termos de serviços e política de privacidade do Aqui Tem Assédio.</Text>
+        </View>
       );
   }
 }

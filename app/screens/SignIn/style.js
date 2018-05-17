@@ -6,11 +6,25 @@ import { width } from '../../config/constants';
 export const STYLES = StyleSheet.create({
   container:{
     flex:1,
+    justifyContent:'space-around',
+    alignItems:'center',
+    backgroundColor: '#291b59',
+  },
+  welcomeMessage:{
+    color: 'white',
+    fontSize: 26,
+    padding: 30,
+  },
+  termsMessage: {
+    color: 'white',
+    fontSize: 12,
+    padding: 30,
+    textAlign: 'justify',
   },
   buttonStyle:{
     width: 200,
     alignSelf: 'center',
-    borderRadius: 6,
+    borderRadius: 100,
     padding: 10,
     backgroundColor: '#3B5998',
   },
@@ -19,14 +33,4 @@ export const STYLES = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold'
   },
-  text:{
-    color: 'white',
-    alignSelf: 'center',
-    fontSize: 16
-  },
-  container:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center'
-  },
-})
+});
