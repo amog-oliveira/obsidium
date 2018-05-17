@@ -4,27 +4,33 @@ import { width } from '../../config/constants';
 
 
 export const STYLES = StyleSheet.create({
-  button: {
-    width: width * 0.8,
-    //flex: 1,
-    //alignSelf: 'center',
-    backgroundColor: 'purple',
-    height: 40,    
-    marginTop: 20,
-    justifyContent: 'center'
-    
-  },
-  text:{
-    color: 'white',
-    alignSelf: 'center',
-    fontSize: 16
-  },
   container:{
     flex:1,
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent:'space-around',
+    alignItems:'center',
+    backgroundColor: '#291b59',
   },
-  view: {
-    alignItems: 'center'
-  }
-})
+  welcomeMessage:{
+    color: 'white',
+    fontSize: 26,
+    padding: 30,
+  },
+  termsMessage: {
+    color: 'white',
+    fontSize: 12,
+    padding: 30,
+    textAlign: 'justify',
+  },
+  buttonStyle:{
+    width: 200,
+    alignSelf: 'center',
+    borderRadius: 100,
+    padding: 10,
+    backgroundColor: '#3B5998',
+  },
+  textButtonStyle: {
+    color: 'white', 
+    alignSelf: 'center',
+    fontWeight: 'bold'
+  },
+});

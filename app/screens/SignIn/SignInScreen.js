@@ -1,51 +1,29 @@
 import React, { Component } from 'react';
 import { Container, Content, Form, Item, Input, Label } from 'native-base';
 import { Text, TouchableOpacity, View, Image } from 'react-native';
+import LoginFB from './LoginFB';
+import { firebase } from '../../config/firebase';
 import { STYLES } from './style';
-import { LOGO_GIRL_POWER } from '../../config/images';
+import { LOGO } from '../../config/images';
 
 export default class SignInScreen extends Component{
 
-  feedScreen(){
-    this.props.navigation.navigate('FeedScreen');
+  componentWillMount(){
+    const { navigate } = this.props.navigation;
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user != null){
+        navigate('FeedScreen');
+      }
+    })
   }
 
   render(){
-    return (
-      <Container>
-
-        <View
-            style={ STYLES.view }
-          >
-          <Image
-            source={LOGO_GIRL_POWER}
-          />
+      return (
+        <View style={ STYLES.container }>
+          <Text style={ STYLES.welcomeMessage }>Bem vindo(a) ao{ '\n'}Aqui tem Assédio</Text>
+          <LoginFB/>
+          <Text style={ STYLES.termsMessage }>Ao clicar em continuar, aceito os termos de serviços e política de privacidade do Aqui Tem Assédio.</Text>
         </View>
-
-        <Content>
-          <Form>
-            <Item floatingLabel>
-              <Label>Username</Label>
-              <Input />
-            </Item>
-            <Item floatingLabel last>
-              <Label>Password</Label>
-              <Input secureTextEntry={true} />
-            </Item>
-            <View style={ STYLES.container}>
-              <TouchableOpacity
-                style={STYLES.button}
-                onPress={() => { this.feedScreen() }}>
-                <Text
-                  style={STYLES.text}
-                >Acessar</Text>
-              </TouchableOpacity>
-
-            </View>
-
-          </Form>
-        </Content>
-      </Container>
-    );
+      );
   }
 }
