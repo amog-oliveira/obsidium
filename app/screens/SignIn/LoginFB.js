@@ -42,7 +42,7 @@ export default class LoginFB extends Component{
     }
 
     facebookLogin = async () => { 
-        const {type, token} =  await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: [ 'public_profile', 'email'] })        
+        const {type, token} =  await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: [ 'public_profile', 'email'] });   
         if (type == 'success'){            
             const response = await fetch(
                 `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,about,picture`
@@ -56,18 +56,18 @@ export default class LoginFB extends Component{
     }
 
     getButton(){
-    return(
-        <TouchableOpacity onPress={() => this.facebookLogin()}>
-            <View style={STYLES.buttonStyle}>
-                <Text style={STYLES.textButtonStyle}>
-                    Facebook
-                </Text>
-            </View>
-        </TouchableOpacity>
-    );
+        return(
+            <TouchableOpacity onPress={() => this.facebookLogin()}>
+                <View style={STYLES.buttonStyle}>
+                    <Text style={STYLES.textButtonStyle}>
+                        Facebook
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
     }
 
-    render(){    
+    render(){
         return(
             <View> 
                 { this.getButton() }
