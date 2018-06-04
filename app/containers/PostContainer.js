@@ -29,18 +29,18 @@ export default class PostContainer extends Component {
 
 
   onChangeTextSubmit(text){
-   this.setState({text})
+    this.setState({text})
   }
 
   render() {
 
     return(
       <Post 
-       onChangeTextSubmit={ (text) => this.onChangeTextSubmit(text) }
-       valueText={this.state.text}
-       charactersLimit={this. charactersLimit(this.state.text.length) }
-       onSubmitEditing={ () => this.enviar() }
-       />
+        onChangeTextSubmit={ (text) => this.onChangeTextSubmit(text) }
+        valueText={this.state.text}
+        charactersLimit={this. charactersLimit(this.state.text.length) }
+        onSubmitEditing={ () => this.enviar() }
+      />
     );
   }
 }

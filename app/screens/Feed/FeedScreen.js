@@ -18,13 +18,12 @@ import {FloatButtonAction} from '../../components/FloatButtonAction';
 import { CardHeader } from "../../components/CardHeader";
 import { CardContent } from "../../components/CardContent";
 import { CardFooter } from "../../components/CardFooter";
-
+import { firebase } from '../../config/firebase';
 const { data } = require('../../config/test.json');
 
 export default class FeedScreen extends Component {
 
   cardView(message){
- 
     if( message !== null ){
       return( 
           <Card style={styles.CardView}>
@@ -40,22 +39,20 @@ export default class FeedScreen extends Component {
     }
   }
 
-
-
   render(){
     const { navigate } = this.props.navigation;
     const { params } = this.props.navigation.state;
     const message = params ? params.message : null;
 
-      return( 
+    return( 
       <Container>
 
         <Content>
           { this.cardView(message) }
         </Content>
 
-      <FloatButtonAction navigate={navigate} />
-    </Container>
-      )
+        <FloatButtonAction navigate={navigate} />
+      </Container>
+    )
   }
 }
