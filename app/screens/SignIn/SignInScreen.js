@@ -8,14 +8,14 @@ import { LOGO } from '../../config/images';
 
 export default class SignInScreen extends Component{
 
-  componentWillMount(){
-    const { navigate } = this.props.navigation;
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user != null){
-        navigate('FeedScreen');
-      }
-    })
-  }
+  // componentWillMount(){
+  //   const { navigate } = this.props.navigation;
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     if(user != null){
+  //       navigate('FeedScreen');
+  //     }
+  //   })
+  // }
 
   render(){
       return (

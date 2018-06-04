@@ -34,7 +34,10 @@ export default class FeedScreen extends Component {
       );
     }else{
       return(
-        <Text>Não há mensagens cadastradas</Text>
+        <Card>
+          <Text>Não há mensagens cadastradas</Text>
+        </Card>
+        
       );
     }
   }
