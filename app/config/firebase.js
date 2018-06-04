@@ -1,16 +1,9 @@
 import * as firebase from 'firebase';
+import { firebaseConfig } from './services';
 
-const config = {
-    apiKey: "AIzaSyCaNqvg4fHyuj9CMqe6qnIHjKjp6JRnoUU",  
-    authDomain: "aquitemassedio.firebaseapp.com",
-    databaseURL: "https://aquitemassedio.firebaseio.com",
-    projectId: "aquitemassedio",
-    storageBucket: "aquitemassedio.appspot.com",
-    messagingSenderId: "835794669970"
-};
 
 if(!firebase.apps.length){
-    firebase.initializeApp(config);
+    firebase.initializeApp(firebaseConfig);
 }
 
 const auth = firebase.auth();
