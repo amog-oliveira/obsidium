@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { firebase } from '../../config/firebase';
 import {
     View,
     Text,
@@ -7,10 +6,12 @@ import {
     Alert,
 } from 'react-native';
 import Expo from 'expo';
+import { firebase } from '../../config/firebase';
+import { facebookConfig } from '../../config/services';
 import { STYLES } from './style';
 
 
-const id = '1179605262181506';
+const id = facebookConfig.id;
 
 export default class LoginFB extends Component{
 

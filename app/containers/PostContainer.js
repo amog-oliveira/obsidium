@@ -24,7 +24,7 @@ export default class PostContainer extends Component {
   } 
 
   enviar() {
-    this.props.navigation.navigate('FeedScreen', { message: this.state.text } )
+    this.props.navigation('FeedScreen', { message: this.state.text } );
   }
 
 

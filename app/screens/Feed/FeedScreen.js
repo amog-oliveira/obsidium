@@ -29,13 +29,13 @@ export default class FeedScreen extends Component {
       return( 
           <Card style={styles.CardView}>
             <CardHeader imageURI={FEMALE_AVATAR} name={data.name} nickname={data.nickname} />
-            <CardContent mensagem={mensagem} />            
-            <CardFooter enviado={data.enviado} />            
+            <CardContent mensagem={message} />
+            <CardFooter enviado={data.enviado} />
           </Card>
       );
     }else{
       return(
-        <Text>Não mensagens cadastradas</Text>
+        <Text>Não há mensagens cadastradas</Text>
       );
     }
   }
@@ -44,10 +44,8 @@ export default class FeedScreen extends Component {
 
   render(){
     const { navigate } = this.props.navigation;
-
     const { params } = this.props.navigation.state;
     const message = params ? params.message : null;
-
 
       return( 
       <Container>

@@ -13,7 +13,7 @@ export default class PostScreen extends Component {
   render() {
 
     return (
-      <PostContainer />
+      <PostContainer navigation={this.props.navigation.navigate}/>
     );
   }
 }
