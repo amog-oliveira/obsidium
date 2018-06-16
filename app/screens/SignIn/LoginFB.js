@@ -14,6 +14,10 @@ import { STYLES } from './style';
 const id = facebookConfig.id;
 
 export default class LoginFB extends Component{
+    constructor(props){
+        super(props);
+        this.navigate = this.props.navigate;
+    }
 
     saveUserDataOnFireBase = (userFacebookInfo) => {
         const userId = firebase.auth().currentUser.uid;
@@ -24,16 +28,17 @@ export default class LoginFB extends Component{
             photoUrl: userFacebookInfo.picture.data.url
         };
 
-        firebase.database().ref('profiles/' + userId).set(params)
+        firebase.database().ref('users/' + userId).set(params)
         .then((data) => {
             console.log('Data was saved\n' + data);
+            return this.navigate('FeedScreen');
         }).catch((error) => {
             console.log('Data could not be saved\n' + error);
         })
     }
 
     firebaseLogin = (credential, userFacebookInfo) => {
-        firebase.auth().signInWithCredential(credential)
+        firebase.auth().signInAndRetrieveDataWithCredential(credential)
         .then(() => {
             this.saveUserDataOnFireBase(userFacebookInfo);
         }).catch((error) => {
@@ -50,7 +55,6 @@ export default class LoginFB extends Component{
             const userFacebookInfo = await response.json();
             const credential = await firebase.auth.FacebookAuthProvider.credential(token);
             this.firebaseLogin(credential, userFacebookInfo);
-            this.navigateTo('FeedScreen');
         }else{
             Alert.alert("Login", "Login cancelado");
         } 
@@ -67,10 +71,6 @@ export default class LoginFB extends Component{
                 </Text>
             </TouchableOpacity>
         );
-    }
-
-    navigateTo(screenName){
-        this.props.navigation.navigate(screenName);
     }
 
     render(){
