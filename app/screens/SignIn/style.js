@@ -1,18 +1,19 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { width } from '../../config/constants';
+import { StyleSheet } from 'react-native';
 
 
-
+const PRIMARY_COLOR = '#291b59';
 export const STYLES = StyleSheet.create({
   container:{
     flex:1,
-    justifyContent:'space-around',
+    justifyContent:'center',
     alignItems:'center',
-    backgroundColor: '#291b59',
+    backgroundColor: PRIMARY_COLOR,
   },
   welcomeMessage:{
     color: 'white',
-    fontSize: 26,
+    marginTop: 10,
+    textAlign: 'center',
+    fontSize: 16,
     padding: 30,
   },
   termsMessage: {
@@ -22,10 +23,10 @@ export const STYLES = StyleSheet.create({
     textAlign: 'justify',
   },
   buttonStyle:{
-    width: 200,
+    width: 300,
     alignSelf: 'center',
     borderRadius: 100,
-    padding: 10,
+    padding: 20,
     backgroundColor: '#3B5998',
   },
   textButtonStyle: {

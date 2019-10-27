@@ -1,33 +1,27 @@
 import React, { Component } from 'react';
-import { Container, Content, Form, Item, Input, Label } from 'native-base';
-import { Text, TouchableOpacity, View, Image } from 'react-native';
+import { 
+  Text,
+  KeyboardAvoidingView,
+  View,
+  StyleSheet } from 'react-native';
 import LoginFB from './LoginFB';
 import { firebase } from '../../config/firebase';
-import { STYLES } from './style';
 import { LOGO } from '../../config/images';
+import Login from './Login';
 
-export default class SignInScreen extends Component{
-
-  navigateTo(screenName){
-    this.props.navigation.navigate(screenName);
-}
-
-  // componentWillMount(){
-  //   const { navigate } = this.props.navigation;
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if(user != null){
-  //       navigate('FeedScreen');
-  //     }
-  //   })
-  // }
-
-  render(){
+export default function SignInScreen({navigation}) {
       return (
-        <View style={ STYLES.container }>
-          <Text style={ STYLES.welcomeMessage }>Bem vindo(a) ao{ '\n'}Aqui tem Assédio</Text>
-          <LoginFB navigate={this.props.navigation.navigate}/>
-          <Text style={ STYLES.termsMessage }>Ao clicar em continuar, aceito os termos de serviços e política de privacidade do Aqui Tem Assédio.</Text>
+        <View style={styles.container}>
+          <Login navigation={navigation} />
+          <LoginFB />
         </View>
       );
-  }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center'
+  },
+});

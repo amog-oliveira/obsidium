@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Navigation } from './app/config/routes';
 import { YellowBox } from 'react-native';
+import Routes from './app/config/routes';
 
 YellowBox.ignoreWarnings([
     "Warning: componentWillMount is deprecated",
@@ -9,10 +8,6 @@ YellowBox.ignoreWarnings([
     "Warning: componentWillUpdate is deprecated", 
 ]);
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Navigation />
-    );
-  }
+export default function App() {
+  return <Routes />
 }

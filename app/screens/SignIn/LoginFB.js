@@ -5,13 +5,15 @@ import {
     TouchableOpacity,
     Alert,
 } from 'react-native';
-import Expo from 'expo';
+import * as Facebook  from 'expo-facebook';
+import {
+    FACEBOOK_APP_ID
+  } from 'react-native-dotenv';
 import { firebase } from '../../config/firebase';
-import { facebookConfig } from '../../config/services';
+// import { facebookConfig } from '../../config/services';
 import { STYLES } from './style';
 
-
-const id = facebookConfig.id;
+const FACEBOOK_PERMISSIONS = { permissions: [ 'public_profile', 'email'] };
 
 export default class LoginFB extends Component{
     constructor(props){
@@ -38,16 +40,20 @@ export default class LoginFB extends Component{
     }
 
     firebaseLogin = (credential, userFacebookInfo) => {
-        firebase.auth().signInAndRetrieveDataWithCredential(credential)
+        firebase.auth().signInWithCredential(credential)
         .then(() => {
             this.saveUserDataOnFireBase(userFacebookInfo);
         }).catch((error) => {
-            Alert.alert(error);
+            Alert.alert('credential:', credential);
         })
     }
 
     facebookLogin = async () => { 
-        const {type, token} =  await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: [ 'public_profile', 'email'] });   
+        const { type, token } =  await Facebook.logInWithReadPermissionsAsync(
+            FACEBOOK_APP_ID,
+            FACEBOOK_PERMISSIONS
+        );
+   
         if (type == 'success'){            
             const response = await fetch(
                 `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,about,picture`
@@ -67,7 +73,7 @@ export default class LoginFB extends Component{
                 onPress={() => this.facebookLogin()}
             >
                 <Text style={STYLES.textButtonStyle}>
-                    Continuar com Facebook
+                    Acessar com Facebook
                 </Text>
             </TouchableOpacity>
         );

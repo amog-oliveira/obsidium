@@ -1,10 +1,17 @@
 {
   "expo": {
-    "sdkVersion": "26.0.0",
-    "splash":{
+    "sdkVersion": "35.0.0",
+    "splash": {
       "image": "./app/images/tela1.png",
       "backgroundColor": "#630460",
       "resizeMode": "cover"
-    }
+    },
+    "name": "obsidium",
+    "slug": "obsidium",
+    "version": "0.1.0",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }
