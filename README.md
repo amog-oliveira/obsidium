@@ -31,6 +31,8 @@ Instale a versão do expo-cli
 Configure o seu ambiente Firebase e Facebook, tutorial no site:
 [Tutorial](https://www.instamobile.io/react-native-tutorials/facebook-login-react-native-firebase/)
 
+Tem um arquivo chamado `.env.default-project`. Renomeie para `.env`.
+Adicione todos os valores do Firebase e do Facebook.
 
 Documentação
 ---------------------

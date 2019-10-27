@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    View,
     Text,
     TouchableOpacity,
     Alert,
@@ -9,20 +8,17 @@ import * as Facebook  from 'expo-facebook';
 import {
     FACEBOOK_APP_ID
   } from 'react-native-dotenv';
-import { firebase } from '../../config/firebase';
 // import { facebookConfig } from '../../config/services';
 import { STYLES } from './style';
+import { withNavigation } from 'react-navigation';
+import { auth, firebase } from './../../config/firebase';
 
 const FACEBOOK_PERMISSIONS = { permissions: [ 'public_profile', 'email'] };
 
-export default class LoginFB extends Component{
-    constructor(props){
-        super(props);
-        this.navigate = this.props.navigate;
-    }
+function LoginFB({navigation}){
 
     saveUserDataOnFireBase = (userFacebookInfo) => {
-        const userId = firebase.auth().currentUser.uid;
+        const userId = auth.currentUser.uid;
         const params = {
             facebookId: userFacebookInfo.id,
             name: userFacebookInfo.name,
@@ -33,14 +29,14 @@ export default class LoginFB extends Component{
         firebase.database().ref('users/' + userId).set(params)
         .then((data) => {
             console.log('Data was saved\n' + data);
-            return this.navigate('FeedScreen');
+            return navigation.navigate('FeedScreen');
         }).catch((error) => {
             console.log('Data could not be saved\n' + error);
         })
     }
 
     firebaseLogin = (credential, userFacebookInfo) => {
-        firebase.auth().signInWithCredential(credential)
+        auth.signInWithCredential(credential)
         .then(() => {
             this.saveUserDataOnFireBase(userFacebookInfo);
         }).catch((error) => {
@@ -66,7 +62,6 @@ export default class LoginFB extends Component{
         } 
     }
 
-    getButton(){
         return(
             <TouchableOpacity 
                 style={STYLES.buttonStyle} 
@@ -77,13 +72,6 @@ export default class LoginFB extends Component{
                 </Text>
             </TouchableOpacity>
         );
-    }
-
-    render(){
-        return(
-            <View> 
-                { this.getButton() }
-            </View>
-        );
-    }
 }
+
+export default withNavigation(LoginFB);

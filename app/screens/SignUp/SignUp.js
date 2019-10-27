@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { auth } from 'firebase';
 import { withNavigation } from 'react-navigation';
+import { firebase } from './../../config/firebase';
 
 const COLOR_WHITE = '#fff';
 const COLOR_BLUE_LIGHT = '#006fe0';
@@ -16,9 +16,14 @@ function SignUp({ navigation }) {
 
 
   async function handleSubmit(){
-    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-      console.log(error);
-    });
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then( () => {
+      const currentUser = firebase.auth().currentUser
+      navigation.navigate('FeedScreen', { currentUser: currentUser });
+    })
+    .catch(error => {
+      console.log('Mensagem: ', error.message)
+    })
   }
 
   async function handleSubmitLogin(){
@@ -45,14 +50,14 @@ function SignUp({ navigation }) {
         placeholderTextColor={COLOR_GRAY_DARK_LIGHT}
         secureTextEntry={true}
       />
-      <TextInput 
+      {/* <TextInput 
         style={styles.inputBox}
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         placeholder='Confirmar senha'
         placeholderTextColor={COLOR_GRAY_DARK_LIGHT}
         secureTextEntry={true}
-      />
+      /> */}
       <TouchableOpacity
         style={styles.button}
         onPress={handleSubmit}
