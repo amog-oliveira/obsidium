@@ -1,35 +1,17 @@
 
-import { StackNavigator } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import SignUpScreen from './../screens/SignUp/SignUpScreen';
 import SignInScreen from './../screens/SignIn/SignInScreen';
 import FeedScreen from '../screens/Feed/FeedScreen';
+import PostScreen from "../screens/Post/PostScreen";
 
-export const Navigation = StackNavigator({
-  SignInScreen: {
-    screen: SignInScreen,
-    navigationOptions: {
-      title: 'LOGIN',
-      headerTitleStyle: 'center',
-      headerStyle: {
-        backgroundColor: 'white',
-      },
-      headerTitleStyle: {
-        color: 'purple'
-      }
-    }
-  },
-  FeedScreen: {
-    screen: FeedScreen,
-    navigationOptions: {
-      title: 'Denúncias',
-      headerLeft: null,
-      headerTitleStyle: 'center',
-      headerStyle: {
-        backgroundColor: 'white',
-      },
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        color: 'black'
-      }
-    }
-  },
-})
+const Routes = createAppContainer(
+  createSwitchNavigator({
+    SignInScreen,
+    FeedScreen,
+    SignUpScreen,
+    PostScreen
+  })
+);
+
+export default Routes;

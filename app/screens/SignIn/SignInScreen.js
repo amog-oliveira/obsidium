@@ -1,46 +1,27 @@
 import React, { Component } from 'react';
-import { Container, Content, Form, Item, Input, Label } from 'native-base';
-import { Text, TouchableOpacity, View, Image } from 'react-native';
-import { STYLES } from './style';
-import { LOGO_GIRL_POWER } from '../../config/images';
+import { 
+  Text,
+  KeyboardAvoidingView,
+  View,
+  StyleSheet } from 'react-native';
+import LoginFB from './LoginFB';
+import { firebase } from '../../config/firebase';
+import { LOGO } from '../../config/images';
+import Login from './Login';
 
-export default class SignInScreen extends Component{
-  render(){
-    return (
-      <Container>
-
-        <View
-            style={ STYLES.view }
-          >
-          <Image
-            source={LOGO_GIRL_POWER}
-          />
+export default function SignInScreen({navigation}) {
+      return (
+        <View style={styles.container}>
+          <Login navigation={navigation} />
+          <LoginFB />
         </View>
-
-        <Content>
-          <Form>
-            <Item floatingLabel>
-              <Label>Username</Label>
-              <Input />
-            </Item>
-            <Item floatingLabel last>
-              <Label>Password</Label>
-              <Input secureTextEntry={true} />
-            </Item>
-            <View style={ STYLES.container}>
-              <TouchableOpacity
-                style={STYLES.button}
-                onPress={() => { alert('Você acessou.') }}>
-                <Text
-                  style={STYLES.text}
-                >Acessar</Text>
-              </TouchableOpacity>
-
-            </View>
-
-          </Form>
-        </Content>
-      </Container>
-    );
-  }
+      );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center'
+  },
+});

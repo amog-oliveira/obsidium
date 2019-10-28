@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
+export const CardContentStyle = StyleSheet.create({
     PostView: {
         flex: 1,
         height: 150,

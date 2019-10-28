@@ -6,7 +6,7 @@ OBSIDIUM 0.0.1
 
 Sobre esta versão
 ---------------------
-O Sistema foi desenvolvido em React-native.
+O Sistema foi desenvolvido em React-native com Expo.
 Versão:
  - react-native-cli: 2.0.1
  - react-native: 0.45.1
@@ -24,9 +24,15 @@ ATENÇÃO
 Configuração inicial
 ---------------------
 ```
-   npm install
+   yarn
 ```
+Instale a versão do expo-cli
 
+Configure o seu ambiente Firebase e Facebook, tutorial no site:
+[Tutorial](https://www.instamobile.io/react-native-tutorials/facebook-login-react-native-firebase/)
+
+Tem um arquivo chamado `.env.default-project`. Renomeie para `.env`.
+Adicione todos os valores do Firebase e do Facebook.
 
 Documentação
 ---------------------

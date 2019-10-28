@@ -1,30 +1,37 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { width } from '../../config/constants';
+import { StyleSheet } from 'react-native';
 
 
-
+const PRIMARY_COLOR = '#291b59';
 export const STYLES = StyleSheet.create({
-  button: {
-    width: width * 0.8,
-    //flex: 1,
-    //alignSelf: 'center',
-    backgroundColor: 'purple',
-    height: 40,    
-    marginTop: 20,
-    justifyContent: 'center'
-    
-  },
-  text:{
-    color: 'white',
-    alignSelf: 'center',
-    fontSize: 16
-  },
   container:{
     flex:1,
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
+    backgroundColor: PRIMARY_COLOR,
   },
-  view: {
-    alignItems: 'center'
-  }
-})
+  welcomeMessage:{
+    color: 'white',
+    marginTop: 10,
+    textAlign: 'center',
+    fontSize: 16,
+    padding: 30,
+  },
+  termsMessage: {
+    color: 'white',
+    fontSize: 12,
+    padding: 30,
+    textAlign: 'justify',
+  },
+  buttonStyle:{
+    width: 300,
+    alignSelf: 'center',
+    borderRadius: 100,
+    padding: 20,
+    backgroundColor: '#3B5998',
+  },
+  textButtonStyle: {
+    color: 'white', 
+    alignSelf: 'center',
+    fontWeight: 'bold'
+  },
+});
