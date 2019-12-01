@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View, AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { firebase } from './../../config/firebase';
+import API from '../../services/api';
 
 const COLOR_WHITE = '#fff';
 const COLOR_BLUE_LIGHT = '#006fe0';
@@ -16,14 +17,27 @@ function SignUp({ navigation }) {
 
 
   async function handleSubmit(){
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then( () => {
-      const currentUser = firebase.auth().currentUser
-      navigation.navigate('FeedScreen', { currentUser: currentUser });
-    })
-    .catch(error => {
-      console.log('Mensagem: ', error.message)
-    })
+    try{
+      const response = await API.post('/users',{
+        email,
+        password
+      });
+      const { uid } = response.data;
+    await AsyncStorage.setItem('user_uid', uid);
+    navigation.navigate('FeedScreen');
+
+    }catch(error){
+      console.log('Error:',error)
+    }
+
+    // firebase.auth().createUserWithEmailAndPassword(email, password)
+    // .then( () => {
+    //   const currentUser = firebase.auth().currentUser
+    //   navigation.navigate('FeedScreen', { currentUser: currentUser });
+    // })
+    // .catch(error => {
+    //   console.log('Mensagem: ', error.message)
+    // })
   }
 
   async function handleSubmitLogin(){

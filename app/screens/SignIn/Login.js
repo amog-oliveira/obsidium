@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { auth } from 'firebase';
 import { withNavigation } from 'react-navigation';
+import API from '../../services/api';
 
 const COLOR_WHITE = '#fff';
 const COLOR_BLUE_LIGHT = '#006fe0';
