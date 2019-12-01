@@ -34,6 +34,12 @@ Configure o seu ambiente Firebase e Facebook, tutorial no site:
 Tem um arquivo chamado `.env.default-project`. Renomeie para `.env`.
 Adicione todos os valores do Firebase e do Facebook.
 
+### Imagens do Projeto
+
+[![Image from Gyazo](https://i.gyazo.com/fae1e3dfa9b58637861f2e4165e7fd9a.gif)](https://gyazo.com/fae1e3dfa9b58637861f2e4165e7fd9a)
+
+[![Image from Gyazo](https://i.gyazo.com/a3934ce6b34e6a3b8d72f2b76578778f.gif)](https://gyazo.com/a3934ce6b34e6a3b8d72f2b76578778f)
+
 Documentação
 ---------------------
 
